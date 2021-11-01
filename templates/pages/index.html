@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class ="card text-center">
+	<div class ="card-body">
+		<h1>Welcome To 
+		<strong>Suffrage <img src="https://cdn4.iconfinder.com/data/icons/political-elections/50/19-512.png" height="60px" width="60px"></strong>
+		</h1>
+		
+<br>
+		<a class ="btn btn-dark" href ="{% url 'campaigns:index' %}">
+			<b>View Available Campaigns</b></a>
+	</div>
+</div>
+{% endblock %}

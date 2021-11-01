@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class ="mb-3 text-center">Thank You for casting your vote</h1>
+<center>
+<img src="https://i.pinimg.com/originals/7b/dd/1b/7bdd1bc7db7fd48025d4e39a0e2f0fd8.jpg" height="200px" width="200px">
+
+{% comment %} 
+<ul class ="list-group mb-5">
+	{% for candidate in campaign.choice_set.all %}
+	<li class ="list-group-item">
+		{{ candidates.candidate_list }} <span class ="badge badge-success float-right">{{ candidate.votes }}
+			vote{{ candiate.votes | pluralize }}</span>
+	</li>
+	{% endfor %}
+</ul> {% endcomment %}
+<p><b>You have casted your vote successfully.</b></p>
+<a class ="btn btn-secondary" href ="{% url 'campaigns:index' %}"><b>Back To Campaigns</b></a>
+</center>
+{% comment %} <a class ="btn btn-dark" href ="{% url 'campaigns:detail' campaign.id %}">Vote again?</a> {% endcomment %}
+{% endblock %}

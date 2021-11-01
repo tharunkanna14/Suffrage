@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<a class ="btn btn-secondary btn-sm mb-3" href ="{% url 'campaigns:index' %}"><b>Back To Campaigns</b></a>
+<h1 class ="text-center mb-3">Campaign Name: {{ campaign.organization_name }}</h1>
+
+{% if error_message %}
+<p class ="alert alert-danger">
+	<strong>{{ error_message }}</strong>
+</p>
+
+{% endif %}
+
+<form action ="{% url 'campaigns:vote' campaign.id %}" method ="post">
+	{% csrf_token %}
+	{% for candidate in campaign.candidates_set.all %}
+	<div class="card">
+  <div class="card-header">
+    <p><b>Candidate {{ forloop.counter }}</b></p>
+
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Name: <b>{{ candidate.candidate_list }}</b></h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	
+    <button type ="submit"  name = "choice" id ="choice{{ forloop.counter }}"  value ="{{ candidate.id }}" class ="btn btn-success btn-lg btn-block mt-4"><b>Vote now</b></button>
+  </div>
+</div>
+<br>
+
+{% endfor %}
+  
+	{% comment %} {% for candidate in campaign.candidates_set.all %}
+	<div class ="form-check">
+		<input ty%pe ="radio" name ="choice" class ="form-check-input" id ="choice{{ forloop.counter }}"
+			value ="{{ candidate.id }}" />
+		<label for ="choice{{ forloop.counter }}">{{ candidate.candidate_list }}</label>
+	</div>
+	{% endfor %}
+	<input type ="submit" value ="Vote" class ="btn btn-success btn-lg btn-block mt-4" /> {% endcomment %}
+</form>
+{% endblock %}
