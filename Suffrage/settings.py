@@ -17,6 +17,8 @@ import os
 import pycurl
 from io import BytesIO
 
+ALLOWED_HOSTS = []
+
 # Determine Public IP address of EC2 instance
 buffer = BytesIO()
 c = pycurl.Curl()
@@ -39,9 +41,6 @@ SECRET_KEY = 'django-insecure-j734e3_(1-@5etn795+e12%sc1))$k7*f9+@g*7sp&i%ibzwqw
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
