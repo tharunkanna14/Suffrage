@@ -13,6 +13,20 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+# To append EC2 public ipv4 to allowed hosts automatically
+import pycurl
+from io import BytesIO
+
+# Determine Public IP address of EC2 instance
+buffer = BytesIO()
+c = pycurl.Curl()
+c.setopt(c.URL, 'checkip.amazonaws.com')
+c.setopt(c.WRITEDATA, buffer)
+c.perform()
+c.close()
+# Body is a byte string, encoded. Decode it first.
+ALLOWED_HOSTS.append(buffer.getvalue().decode('iso-8859-1').strip())
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
