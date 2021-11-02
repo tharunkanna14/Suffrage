@@ -25,7 +25,7 @@ def detail(request, campaign_id):
 	with open("new_data.txt","r") as rn:
 		data = rn.read()
 		if str(campaign.id) + ',' + str(request.user.username) in data:
-			messages.warning(request,"you have already attended the pole.")
+			messages.warning(request,"you have already attended the poll.")
 			return redirect(reverse("campaigns:index"))
 
 	try:
