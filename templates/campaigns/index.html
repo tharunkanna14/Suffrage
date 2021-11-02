@@ -13,7 +13,7 @@
 		<p>Campaign name: <b>{{ campaign.organization_name }}</b></p>
 		<b>Published On: {{ campaign.pub_date }}</b><br><br>
 		
-		<a href ="{% url 'campaigns:detail' campaign.id %}" class ="btn btn-primary btn-sm"><b>Caste your vote</b></a>
+		<a href ="{% url 'campaigns:detail' campaign.id %}" class ="btn btn-primary btn-sm"><b>Cast your vote</b></a>
 		{% comment %} <a href ="{% url 'campaigns:results' campaign.id %}" class ="btn btn-secondary btn-sm">Results</a> {% endcomment %}
 	</div>
 </div>
