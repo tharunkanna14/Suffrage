@@ -31,6 +31,25 @@ jobs:
         run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+      - name: Server script
+        run: |
+          sudo apt-get update
+          sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3 -y 
+          sudo pip3 install virtualenv
+          mkdir django
+          cd django
+          virtualenv SuffrageVoteenv
+          sudo git clone "https://github.com/Deepika151200/SuffrageVote"
+          source SuffrageVoteenv/bin/activate
+          cd SuffrageVote
+          sudo apt-get update -y
+          sudo apt-get install -y python-pycurl
+          sudo apt install python3-pycurl
+          sudo pip install -r requirements.txt
+          sudo python3 manage.py makemigrations
+          sudo python3 manage.py migrate
+          sudo python3 manage.py runserver 0.0.0.0:8000
+
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
